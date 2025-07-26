@@ -1,0 +1,38 @@
+{
+  "name": "reactpress",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.13.1",
+  "description": "",
+  "type": "module",
+  "keywords": [],
+  "license": "MIT",
+  "author": "",
+  "main": "./dist/cli.mjs",
+  "module": "./dist/cli.mjs",
+  "exports": {
+    "./cli": "./src/node/cli.ts",
+    "./dev": "./src/node/dev.ts",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "reactpress": "./bin/index.js"
+  },
+  "publishConfig": {
+    "exports": {
+      "./cli": "./dist/node/cli.js",
+      "./dev": "./dist/node/dev.js",
+      "./package.json": "./package.json"
+    }
+  },
+  "scripts": {
+    "dev": "tsdown --watch"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "vite": "^6.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "tsdown": "^0.13.0"
+  }
+}

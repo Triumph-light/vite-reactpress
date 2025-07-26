@@ -1,0 +1,20 @@
+{
+  "name": "vite-reactpress",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.13.1",
+  "description": "",
+  "type": "module",
+  "keywords": [],
+  "license": "MIT",
+  "author": "Triumph-light",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
+  "devDependencies": {
+    "eslint": "^9.31.0",
+    "tl-eslint-config": "1.0.6"
+  }
+}

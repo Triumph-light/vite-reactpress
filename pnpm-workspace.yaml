@@ -1,0 +1,5 @@
+packages:
+  - packages/*
+
+overrides:
+  tl-eslint-config: link:../../../Library/pnpm/global/5/node_modules/tl-eslint-config
