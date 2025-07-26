@@ -10,6 +10,5 @@ export default defineConfig([
       devExports: true,
     },
     outDir: "dist/node",
-    target: "node20",
   },
 ]);
