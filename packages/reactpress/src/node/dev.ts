@@ -1,25 +1,13 @@
-import { createServer as createViteDevServer } from "vite";
-import type { CLIDevOptions } from "../shared/types/cli";
-
-/**
- * 清除 server配置以外的选项
- * @param root
- * @param cliOptions
- * @returns
- */
-function cleanCliOptions(options: CLIDevOptions) {
-  options = { ...options };
-  return options;
-}
+import { createServer as createViteDevServer, type ServerOptions } from "vite";
 
 export function createDevServer(
   root = process.cwd(),
-  cliOptions: CLIDevOptions,
+  serverOptions: ServerOptions,
   restartServer: () => Promise<void>,
 ) {
   return createViteDevServer({
     root,
     base: "/",
-    server: cleanCliOptions(cliOptions),
+    server: serverOptions,
   });
 }

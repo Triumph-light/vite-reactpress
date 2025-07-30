@@ -28,10 +28,17 @@
     "dev": "tsdown --watch"
   },
   "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "@types/fs-extra": "^11.0.4",
+    "@vitejs/plugin-react": "^4.7.0",
     "cac": "^6.7.14",
+    "fs-extra": "^11.3.0",
+    "lodash.template": "^4.5.0",
+    "picocolors": "^1.1.1",
     "vite": "^7.0.6"
   },
   "devDependencies": {
+    "@types/lodash.template": "^4.5.3",
     "@types/node": "^24.1.0",
     "tsdown": "^0.13.0"
   }
