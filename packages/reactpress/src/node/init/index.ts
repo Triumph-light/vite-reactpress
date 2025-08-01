@@ -231,12 +231,13 @@ function scaffold({
   /**
    * 注入 scripts 脚本至package.json
    */
+  const dir = root ? ` ${root}` : "";
   if (injectNpmScripts) {
     const scripts: Record<string, string> = {};
 
-    scripts.dev = "reactpress dev";
-    scripts.build = "reactpress build";
-    scripts.preview = "reactpress preview";
+    scripts.dev = `reactpress dev${dir}`;
+    scripts.build = `reactpress build${dir}`;
+    scripts.preview = `reactpress preview${dir}`;
 
     Object.assign(userPkg.scripts || (userPkg.scripts = {}), scripts);
     fs.writeFileSync(pkgPath, JSON.stringify(userPkg, null, 2));
