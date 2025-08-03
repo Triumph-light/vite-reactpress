@@ -1,16 +1,16 @@
 {
   "name": "playground",
   "version": "1.0.0",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.14.0",
   "description": "",
   "keywords": [],
   "license": "MIT",
   "author": "Triumph-light",
   "main": "index.js",
   "scripts": {
-    "dev": "reactpress dev",
-    "build": "reactpress build",
-    "preview": "reactpress preview",
+    "dev": "reactpress dev docs",
+    "build": "reactpress build docs",
+    "preview": "reactpress preview docs",
     "reactpress:init": "reactpress init"
   },
   "dependencies": {
