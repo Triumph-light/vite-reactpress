@@ -7,11 +7,27 @@
   "keywords": [],
   "license": "MIT",
   "author": "",
-  "main": "./dist/cli.mjs",
-  "module": "./dist/cli.mjs",
+  "main": "./dist/client/index.js",
+  "module": "./dist/client/index.js",
   "exports": {
-    "./cli": "./src/node/cli.ts",
-    "./dev": "./src/node/dev.ts",
+    "./app/app": "./src/client/app/app.tsx",
+    "./app/client-entry": "./src/client/app/client-entry.tsx",
+    "./theme-default/components/VPContent": "./src/client/theme-default/components/VPContent.tsx",
+    "./theme-default/components/VPFooter/VPFooter": "./src/client/theme-default/components/VPFooter/VPFooter.tsx",
+    "./theme-default/components/VPNav": "./src/client/theme-default/components/VPNav.tsx",
+    "./theme-default/components/VPSidebar": "./src/client/theme-default/components/VPSidebar.tsx",
+    "./theme-default/index": "./src/client/theme-default/index.ts",
+    "./theme-default/Layout": "./src/client/theme-default/Layout.tsx",
+    "./theme-default/NotFound": "./src/client/theme-default/NotFound.tsx",
+    "./theme-default/styles/base": "./src/client/theme-default/styles/base.css",
+    "./theme-default/styles/components/custom-block": "./src/client/theme-default/styles/components/custom-block.css",
+    "./theme-default/styles/components/vp-code": "./src/client/theme-default/styles/components/vp-code.css",
+    "./theme-default/styles/components/vp-code-group": "./src/client/theme-default/styles/components/vp-code-group.css",
+    "./theme-default/styles/components/vp-doc": "./src/client/theme-default/styles/components/vp-doc.css",
+    "./theme-default/styles/components/vp-sponsor": "./src/client/theme-default/styles/components/vp-sponsor.css",
+    "./theme-default/styles/icons": "./src/client/theme-default/styles/icons.css",
+    "./theme-default/styles/utils": "./src/client/theme-default/styles/utils.css",
+    "./theme-default/styles/vars": "./src/client/theme-default/styles/vars.css",
     "./package.json": "./package.json"
   },
   "bin": {
@@ -19,13 +35,29 @@
   },
   "publishConfig": {
     "exports": {
-      "./cli": "./dist/node/cli.js",
-      "./dev": "./dist/node/dev.js",
+      "./app/app": "./dist/client/app/app.js",
+      "./app/client-entry": "./dist/client/app/client-entry.js",
+      "./theme-default/components/VPContent": "./dist/client/theme-default/components/VPContent.js",
+      "./theme-default/components/VPFooter/VPFooter": "./dist/client/theme-default/components/VPFooter/VPFooter.js",
+      "./theme-default/components/VPNav": "./dist/client/theme-default/components/VPNav.js",
+      "./theme-default/components/VPSidebar": "./dist/client/theme-default/components/VPSidebar.js",
+      "./theme-default/index": "./dist/client/theme-default/index.js",
+      "./theme-default/Layout": "./dist/client/theme-default/Layout.js",
+      "./theme-default/NotFound": "./dist/client/theme-default/NotFound.js",
+      "./theme-default/styles/base": "./dist/client/theme-default/styles/base.js",
+      "./theme-default/styles/components/custom-block": "./dist/client/theme-default/styles/components/custom-block.js",
+      "./theme-default/styles/components/vp-code": "./dist/client/theme-default/styles/components/vp-code.js",
+      "./theme-default/styles/components/vp-code-group": "./dist/client/theme-default/styles/components/vp-code-group.js",
+      "./theme-default/styles/components/vp-doc": "./dist/client/theme-default/styles/components/vp-doc.js",
+      "./theme-default/styles/components/vp-sponsor": "./dist/client/theme-default/styles/components/vp-sponsor.js",
+      "./theme-default/styles/icons": "./dist/client/theme-default/styles/icons.js",
+      "./theme-default/styles/utils": "./dist/client/theme-default/styles/utils.js",
+      "./theme-default/styles/vars": "./dist/client/theme-default/styles/vars.js",
       "./package.json": "./package.json"
     }
   },
   "scripts": {
-    "dev": "node -v && tsdown"
+    "dev": "node -v && tsup --watch"
   },
   "dependencies": {
     "@clack/prompts": "^0.11.0",
@@ -37,6 +69,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.7.1",
+    "typescript": "^5.9.2",
     "vite": "^7.0.6"
   },
   "devDependencies": {
@@ -45,6 +78,7 @@
     "@types/node": "^24.1.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
-    "tsdown": "^0.13.0"
+    "tsdown": "^0.13.0",
+    "tsup": "^8.5.0"
   }
 }

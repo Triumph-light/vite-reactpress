@@ -1,13 +1,36 @@
-import { APP_PATH } from "./alias";
-import type { Plugin } from "vite";
+import { searchForWorkspaceRoot, type Plugin, type UserConfig } from "vite";
+import type { SiteConfig } from "../shared/types/siteConfig";
+import { APP_PATH, DIST_CLIENT_PATH, resolveAliases } from "./alias";
 
 function cleanUrl(url: string) {
   return url.replace(/#.*$/s, "").replace(/\?.*$/s, "");
 }
 
-export function createVitePlugins(config) {
+export function createVitePlugins(siteConfig: SiteConfig) {
+  const { srcDir } = siteConfig;
   const reactPressPlugin: Plugin = {
     name: "reactPressPlugin",
+
+    config() {
+      const baseConfig: UserConfig = {
+        resolve: {
+          alias: resolveAliases(siteConfig),
+        },
+        optimizeDeps: {
+          exclude: ["@theme"],
+        },
+        server: {
+          fs: {
+            allow: [
+              DIST_CLIENT_PATH,
+              searchForWorkspaceRoot(process.cwd()),
+              srcDir,
+            ],
+          },
+        },
+      };
+      return baseConfig;
+    },
 
     configureServer(server) {
       return () =>

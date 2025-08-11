@@ -1,3 +1,5 @@
+import { Layout } from "@theme";
+
 export function App() {
-  return "hello world";
+  return <Layout></Layout>;
 }

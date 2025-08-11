@@ -1,5 +1,5 @@
 import type { BabelOptions } from "@vitejs/plugin-react";
-import type { UserConfig as ViteConfiguration } from "vite";
+import type { Plugin, UserConfig as ViteConfiguration } from "vite";
 
 export interface UserConfig {
   /**
@@ -23,8 +23,15 @@ export interface UserConfig {
   description?: string;
 
   vite?: ViteConfiguration;
+  plugins: Plugin[];
   /**
    * BabelOptions which will be applied to @vitejs/plugin-react
    */
   babel?: BabelOptions;
+}
+
+export interface SiteConfig extends UserConfig {
+  root: string;
+  themeDir: string;
+  srcDir: string;
 }

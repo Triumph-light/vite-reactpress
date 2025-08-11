@@ -1,7 +1,8 @@
 import path from "path";
 import fs from "fs-extra";
 import { normalizePath } from "vite";
-import type { UserConfig } from "../shared/types/siteConfig";
+import type { SiteConfig, UserConfig } from "../shared/types/siteConfig";
+import { DEFAULT_THEME_PATH } from "./alias";
 
 function resolve(root: string, file: string) {
   return normalizePath(path.resolve(root, ".reactpress", file));
@@ -9,13 +10,31 @@ function resolve(root: string, file: string) {
 /**
  * 解析config 配置文件
  */
-export function resolveConfig(
+export async function resolveConfig(
   root: string = process.cwd(),
   command: "serve" | "build" = "serve",
   mode: "development" | "production" = "development",
 ) {
   root = normalizePath(path.resolve(root));
-  resolveUserConfig(root, command, mode);
+  const userConfig = resolveUserConfig(root, command, mode);
+
+  const srcDir = normalizePath(path.resolve(root, "."));
+
+  /**
+   * resolve theme path
+   */
+  const userThemePath = resolve(root, "theme");
+  const themeDir = (await fs.pathExists(userThemePath))
+    ? userThemePath
+    : DEFAULT_THEME_PATH;
+
+  const config: SiteConfig = {
+    root,
+    themeDir,
+    srcDir,
+  };
+
+  return config;
 }
 
 const supportedConfigExtensions = ["js", "ts", "mjs", "mts"];
@@ -33,6 +52,8 @@ function resolveUserConfig(
       resolve(root, `config.${ext}`),
     ])
     .find(fs.existsSync);
+
+  return {};
 }
 
 /**
