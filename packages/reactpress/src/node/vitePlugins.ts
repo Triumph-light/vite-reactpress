@@ -1,15 +1,34 @@
 import { searchForWorkspaceRoot, type Plugin, type UserConfig } from "vite";
 import type { SiteConfig } from "../shared/types/siteConfig";
-import { APP_PATH, DIST_CLIENT_PATH, resolveAliases } from "./alias";
+import {
+  APP_PATH,
+  DIST_CLIENT_PATH,
+  resolveAliases,
+  SITE_DATA_REQUEST_PATH,
+} from "./alias";
+import { dynamicRoutePlugin } from "./plugins/daynamicRoute";
 
 function cleanUrl(url: string) {
   return url.replace(/#.*$/s, "").replace(/\?.*$/s, "");
 }
 
 export function createVitePlugins(siteConfig: SiteConfig) {
-  const { srcDir } = siteConfig;
+  const { srcDir, site } = siteConfig;
+
+  const siteData = site;
+
   const reactPressPlugin: Plugin = {
     name: "reactPressPlugin",
+
+    resolveId(id) {
+      if (id === SITE_DATA_REQUEST_PATH) return SITE_DATA_REQUEST_PATH;
+    },
+    load(id) {
+      if (id === SITE_DATA_REQUEST_PATH) {
+        const data = siteData;
+        return `export default ${JSON.stringify(data)}`;
+      }
+    },
 
     config() {
       const baseConfig: UserConfig = {
@@ -62,5 +81,8 @@ export function createVitePlugins(siteConfig: SiteConfig) {
     },
   };
 
-  return [reactPressPlugin];
+  return [reactPressPlugin,
+    // Conventional Route
+    dynamicRoutePlugin({ srcDir })
+  ];
 }

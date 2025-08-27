@@ -1,3 +1,4 @@
+import type { SiteData } from "./siteData";
 import type { BabelOptions } from "@vitejs/plugin-react";
 import type { Plugin, UserConfig as ViteConfiguration } from "vite";
 
@@ -34,4 +35,6 @@ export interface SiteConfig extends UserConfig {
   root: string;
   themeDir: string;
   srcDir: string;
+
+  site: SiteData;
 }

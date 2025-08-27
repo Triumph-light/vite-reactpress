@@ -1,8 +1,8 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { confirm, group, intro, outro, select, text } from "@clack/prompts";
+import { template } from "es-toolkit/compat";
 import fs from "fs-extra";
-import template from "lodash.template";
 import c from "picocolors";
 import { slash } from "../../shared/utils/common";
 

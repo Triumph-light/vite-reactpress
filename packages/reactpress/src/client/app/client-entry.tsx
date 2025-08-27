@@ -24,12 +24,13 @@ async function enhanceApp(): Promise<React.FC> {
 /**
  * 渲染客服端
  */
-function renderInBrowser() {
+async function renderInBrowser() {
   const appContainer = document.getElementById("app");
   if (!appContainer) {
     throw new Error("#root element not found");
   }
 
-  createRoot(appContainer).render(<App></App>);
+  const RootApp = await enhanceApp();
+  createRoot(appContainer).render(<RootApp></RootApp>);
 }
 renderInBrowser();

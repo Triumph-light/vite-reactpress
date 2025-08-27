@@ -11,9 +11,13 @@ export const DEFAULT_THEME_PATH = path.resolve(
   "theme-default",
 );
 
+export const SITE_DATA_ID = "@siteData";
+export const SITE_DATA_REQUEST_PATH = `/${SITE_DATA_ID}`;
+
 export function resolveAliases({ root, themeDir }: SiteConfig) {
   const path: Record<string, string> = {
     "@theme": themeDir,
+    [SITE_DATA_ID]: SITE_DATA_REQUEST_PATH,
   };
 
   const aliases: Alias[] = [

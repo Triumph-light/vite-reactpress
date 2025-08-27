@@ -1,3 +1,4 @@
+import { Content } from "../app/Content";
 import { VPFooter } from "./components/VPFooter/VPFooter";
 import { VPNav } from "./components/VPNav/VPNav";
 import { VPSideBar } from "./components/VPSideBar/VPSideBar";
@@ -11,11 +12,12 @@ export const Layout: React.FC<LayoutProps> = (props) => {
   const { top, bottom } = props;
   return (
     <div>
-      {top}
+      <Content></Content>
+      {/* {top}
       <VPNav></VPNav>
       <VPSideBar></VPSideBar>
       <VPFooter></VPFooter>
-      {bottom}
+      {bottom} */}
     </div>
   );
 };
